@@ -1,38 +1,93 @@
 .App {
+  background: linear-gradient(45deg,#fff, #0F93D0, darkslateblue);
+  min-height: 100vh;
+}
+.container {
+  width: 700px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-bottom: 50px;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  margin: 0;
+  padding-top: 30px;
+  text-shadow: 3px 3px 3px #F37724;
+  font-size: 50px;
+  color: #F9F7D1;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.enter {
+  height: 50px;
+  padding: 10px;
+  color: darkslateblue;
+  background: #F9F7D1;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 10px;
+  border: solid 3px #F37724 ;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input.enter::placeholder {
+  color: darkslateblue;
+  opacity: .7;
+}
+.search {
+  width: 600px;
+  min-height: 400px;
+  margin: 30px auto;
+  margin-bottom: 0;
+  padding: 30px;
+  background: linear-gradient(-45deg,#290871, #0F93D0,#290871);
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  border-radius: 20px;
+}
+.checkbox-container {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 20px auto;
+  color: #F9F7D1;
+  font-size: 18px;
+  font-weight: bold;
+  font-family:'Times New Roman', Times, serif;
+  text-shadow: 2px 2px 2px #F37724;
 }
-
-.App-link {
-  color: #61dafb;
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  width: 250px;
+  height: 50px;
+  color: #F9F7D1;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #F37724;
+  background:linear-gradient( #0F93D0 85%, #F37724 15%);
+  border-radius: 10px;
+  border: solid 2px #F37724;
+}
+.btn:hover {
+  background: #F37724;
+}
+.output {
+  text-align: left;
+  margin: 20px auto;
+  padding: 10px;
+  background: #F9F7D1;
+  min-height: 100px;
+  width: 540px;
+  color: darkslateblue;
+  border: solid 3px #F37724;
+  box-shadow: inset 3px 3px 4px rgba(154, 147, 140, 0.9), inset -2px -2px 5px rgba(154, 147, 140, 0.9);
+}
+footer {
+  margin: 10px;
+  color: #F9F7D1;
+  text-shadow: 2px 2px 1px #F37724;
 }
