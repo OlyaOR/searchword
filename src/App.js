@@ -1,9 +1,11 @@
 import './App.css';
 
 function App() {
-  fetch('https://www.mrsoft.by/data.json')
-    .then(response => response.json())
-    .then(json => console.log(json))
+  async function getres() {
+    let res = await fetch('https://www.mrsoft.by/data.json');
+    console.log(res);
+  }
+  getres();
   return (
     <div className="App">
       <div className="container">
