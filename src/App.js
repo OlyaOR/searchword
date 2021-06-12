@@ -1,32 +1,82 @@
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
-  async function getres() {
-    let res = await fetch('https://www.mrsoft.by/data.json');
-    console.log(res);
+function App () {
+  let fullarr = [];
+  fetch('https://cors-anywhere.herokuapp.com/https://www.mrsoft.by/data.json') 
+    .then(response => response.json())
+    .then(res => res.data)
+    .then(data => fullarr.push(...data))
+    .catch(res => console.log(`Something wrong: ${res.status}`));
+  const [arr, setArr] = useState([]);
+  const [input, setInput] = useState('');
+  const [upCase, setCase] = useState('');
+  let inputnum = Number(input);
+  function changeArr(event) {
+    event.preventDefault();
+    let newarr = fullarr.filter((elem) => elem.length > inputnum);
+    let newarrcase = newarr.filter(elem => elem === elem.toUpperCase());
+    if (event.target.classList.contains('lenth')) {
+      if (inputnum) {
+        if (newarr.length === 0) {
+          setArr(arr => ['Sorry, no data, please enter something new.'])
+        } else {
+          if (upCase && newarrcase.length === 0) {
+            setArr(arr => ['Sorry, no data, please enter something new.'])
+          } else if (upCase && newarrcase.length > 0){
+            setArr(arr => newarrcase)
+          } else {
+            setArr(arr => newarr)
+          }
+        }
+      } else if (inputnum === 0) {
+        alert('Error! Please enter a number > 0');
+      } else {
+        alert('Error! Please use second button');
+      }
+    } else {
+      newarr = fullarr.filter(elem => elem.toLowerCase().includes(input.toLowerCase()));
+      newarrcase = fullarr.filter(elem => elem.includes(input));
+      if (input === '') {
+        alert('Error! Please enter some letters');
+      } else if (inputnum || inputnum === 0) {
+        alert('Error! Please use first button or enter letters');
+      } else {
+        if (newarr.length === 0) {
+          setArr(arr => ['Sorry, no data, please enter something new.'])
+        } else {
+          if (upCase && newarrcase.length === 0) {
+            setArr(arr => ['Sorry, no data, please enter something new.'])
+          } else if (upCase && newarrcase.length > 0){
+            setArr(arr => newarrcase)
+          } else {
+            setArr(arr => newarr)
+          }
+        }
+      }
+    }
   }
-  getres();
   return (
     <div className="App">
       <div className="container">
         <h1>Search</h1>
         <form className="search">
-          <input type="text" placeholder="Enter symbols" className="enter"/>
-          <div className="checkbox-container">
-            <input type="checkbox" className="checkbox"/>
-            <span>Case sensitivity</span>
+          <input type="text" placeholder="Enter symbols" className="enter" onInput={(input) => setInput(input.target.value)}/>
+          <label className="checkbox-container">
+            <input type="checkbox" className="checkbox" onChange={(event) => setCase(event.target.checked)}/> 
+            Search upper case words
+          </label>
+          <div className="btn-container" onClick={changeArr}>
+            <button type="button" className="btn lenth">Filter by length</button>
+            <button type="button" className="btn">Substring filter</button>
           </div>
-          <div className="btn-container">
-            <button type="submit" className="btn">Filter by length</button>
-            <button type="submit" className="btn">Substring filter</button>
-          </div>
-          <div className="output">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et excepturi veniam sapiente ratione debitis facere a. Ipsa ducimus quod, possimus modi consectetur inventore excepturi harum? Rerum qui enim libero praesentium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus illum asperiores modi iste illo voluptatum voluptatibus labore, praesentium doloremque eveniet corporis iure, sequi quo natus optio alias quaerat veritatis nisi! Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit vitae corrupti non? Dolores quod minus repudiandae. Consectetur asperiores, eum ratione distinctio tempora iusto cupiditate expedita quae sequi minus provident voluptates! lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam eos maxime ut voluptas fugiat aspernatur sed deleniti impedit, rerum nulla molestias voluptatem recusandae repellat. Architecto dolores corporis vel harum illum? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur quod placeat nam soluta qui saepe id distinctio pariatur obcaecati culpa, sit accusantium magni impedit, debitis error! Autem natus maiores totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, iure molestiae. Odit, optio! Doloremque, suscipit modi provident aut autem neque voluptas voluptatum assumenda beatae a quaerat unde quidem officiis eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dolor facilis odio quisquam ut et sed at officia autem, nobis fugiat ea laboriosam numquam minima dicta commodi dignissimos mollitia vel!
-          Lorem ipsum dolor sit amet lorem consectetur, adipisicing elit. Ratione nulla nesciunt natus necessitatibus, nemo sint? Maiores, ut accusantium. Molestias dolorem cum veritatis nulla vel quis corporis labore amet voluptatem quos! . Eligendi magni, deserunt, dignissimos velit at earum exercitationem fugiat eum iure hic voluptate! Itaque voluptates quae illum nisi reprehenderit quasi, voluptatem cumque.</div>
+          <div className="output">{arr.join(', ')}</div>
         </form>
         <footer>by Olga Rozhkova</footer>
       </div>
     </div>
   );
 }
+
 
 export default App;

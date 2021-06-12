@@ -21,10 +21,10 @@ h1 {
   padding: 10px;
   color: darkslateblue;
   background: #F9F7D1;
-  font-weight: bold;
   font-size: 18px;
   border-radius: 10px;
-  border: solid 3px #F37724 ;
+  border: solid 3px #F37724;
+  font-family: 'Times New Roman', Times, serif;
 }
 input.enter::placeholder {
   color: darkslateblue;
@@ -39,7 +39,7 @@ input.enter::placeholder {
   background: linear-gradient(-45deg,#290871, #0F93D0,#290871);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   border-radius: 20px;
 }
 .checkbox-container {
@@ -49,7 +49,6 @@ input.enter::placeholder {
   color: #F9F7D1;
   font-size: 18px;
   font-weight: bold;
-  font-family:'Times New Roman', Times, serif;
   text-shadow: 2px 2px 2px #F37724;
 }
 .checkbox {
@@ -80,11 +79,12 @@ input.enter::placeholder {
   margin: 20px auto;
   padding: 10px;
   background: #F9F7D1;
-  min-height: 100px;
+  min-height: 150px;
   width: 540px;
   color: darkslateblue;
   border: solid 3px #F37724;
   box-shadow: inset 3px 3px 4px rgba(154, 147, 140, 0.9), inset -2px -2px 5px rgba(154, 147, 140, 0.9);
+  font-family: 'Times New Roman', Times, serif;
 }
 footer {
   margin: 10px;
