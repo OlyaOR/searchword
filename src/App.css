@@ -1,5 +1,5 @@
-.App {
-  background: linear-gradient(45deg,#fff, #0F93D0, darkslateblue);
+.App { 
+  background: linear-gradient(45deg,#fff, #0F93D0, darkslateblue) center center/cover no-repeat;
   min-height: 100vh;
 }
 .container {

@@ -1,0 +1,19 @@
+@media (max-width: 700px) {
+    .container {
+        width: 85%;
+    }
+    .search {
+        width: 100%;
+    }
+    .output {
+        width: 100%;
+    }
+    .btn:first-child {
+        margin-right: 15px;
+    }
+}
+@media (max-width: 450px) {
+    .btn {
+        font-size: 15px;
+    }
+}
