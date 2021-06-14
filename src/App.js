@@ -8,7 +8,7 @@ function App () {
     .then(response => response.json())
     .then(res => res.data)
     .then(data => fullarr.push(...data))
-    .catch(res => console.log(`Something wrong: ${res.status}`));
+    .catch(res => alert(`Something wrong. Failed to get data from https://www.mrsoft.by/data.json. Check console or try again`));
 
   const [arr, setArr] = useState([]);
   const [input, setInput] = useState('');
